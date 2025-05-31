@@ -46,7 +46,7 @@ jobs:
 
     - name: Run PHP test module
       run: |
-        docker exec php8_test php /var/www/html/test_module.php
+        docker exec container-php8-1 php /var/www/html/test_module.php
 
     - name: Display success message
       run: echo "Test module executed successfully!"
