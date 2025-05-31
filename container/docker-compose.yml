@@ -1,0 +1,32 @@
+services:
+  postgresql16:
+    image: postgresql16
+    container_name: postgresql16_test
+    command: /sbin/init
+    ports:
+      - "5432:5432"
+    networks:
+      mynetwork:
+        ipv4_address: 172.18.0.10
+
+  php8:
+    build:
+      context: ./php8
+      dockerfile: Dockerfile
+    volumes:
+      - ../src:/var/www/html
+      - ./php8/conf/vhost.conf:/etc/apache2/sites-available/000-default.conf
+    ports:
+      - "80:80"   # Apacheのポート
+    networks:
+      mynetwork:
+        ipv4_address: 172.18.0.11
+
+networks:
+  mynetwork:
+    external: true
+    name: mynetwork
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
