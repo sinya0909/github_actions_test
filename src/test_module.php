@@ -15,9 +15,12 @@ try {
     if ($result && $result['name'] === 'Bob') {
         echo "Test module executed successfully!\n";
         print_r($result);
+        exit(0); // 成功時の終了コード
     } else {
         echo "Test module failed: Unexpected result.\n";
+        exit(1); // 失敗時の終了コード
     }
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
+    exit(1); // 例外発生時の終了コード
 }
