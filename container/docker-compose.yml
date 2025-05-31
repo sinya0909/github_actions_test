@@ -1,6 +1,6 @@
 services:
   postgresql16:
-    image: postgresql16
+    image: sin19950508/postgresql16
     container_name: postgresql16_test
     command: /sbin/init
     ports:
