@@ -9,7 +9,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // サンプルクエリ
-    $query = $pdo->query('SELECT name FROM test_table WHERE age = 25 LIMIT 1');
+    $query = $pdo->query('SELECT name FROM test_table WHERE age = 30 LIMIT 1');
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
     if ($result && $result['name'] === 'Bob') {
