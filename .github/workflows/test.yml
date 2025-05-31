@@ -37,11 +37,12 @@ jobs:
         done
 
     - name: Verify backup file exists
-      run: docker exec postgresql16_test ls /db/backup.sql
+      run: |
+        docker exec postgresql16_test ls /db/test_db.backup
 
     - name: Restore database backup
       run: |
-        docker exec -i postgresql16_test psql -U postgres -d test_db < /db/backup.sql
+        docker exec -i postgresql16_test psql -U postgres -d test_db < /db/test_db.backup
 
     - name: Run PHP test module
       run: |
