@@ -38,7 +38,7 @@ jobs:
 
     - name: Restore database backup
       run: |
-        docker exec -i postgresql16_test pg_restore -U postgres -d your_database_name < /db/test_db.backup
+        docker exec -i postgresql16_test psql -U postgres -d test_db < /db/backup.sql
 
     - name: Run PHP test module
       run: |

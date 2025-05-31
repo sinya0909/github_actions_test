@@ -1,8 +1,11 @@
 services:
   postgresql16:
-    image: sin19950508/postgresql16
+    image: postgres:16
     container_name: postgresql16_test
-    command: /sbin/init
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test_db
     ports:
       - "5432:5432"
     networks:
@@ -17,7 +20,7 @@ services:
       - ../src:/var/www/html
       - ./php8/conf/vhost.conf:/etc/apache2/sites-available/000-default.conf
     ports:
-      - "80:80"   # Apacheのポート
+      - "80:80"
     networks:
       mynetwork:
         ipv4_address: 172.18.0.11
