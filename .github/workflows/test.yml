@@ -36,6 +36,9 @@ jobs:
           sleep 5
         done
 
+    - name: Verify backup file exists
+      run: docker exec postgresql16_test ls /db/backup.sql
+
     - name: Restore database backup
       run: |
         docker exec -i postgresql16_test psql -U postgres -d test_db < /db/backup.sql
