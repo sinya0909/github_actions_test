@@ -12,7 +12,7 @@ services:
       mynetwork:
         ipv4_address: 172.18.0.10
     volumes:
-      - ../db:/db
+      - ./db:/db
 
   php8:
     build:
