@@ -1,3 +1,12 @@
+import sqlite3
+conn = sqlite3.connect('db.sqlite')
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM test_table WHERE age = 25")
+result = cursor.fetchone()
+if result:
+    exit(0)
+else:
+    exit(1)
 <?php
 
 try {
